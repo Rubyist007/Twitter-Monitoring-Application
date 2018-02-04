@@ -1,0 +1,7 @@
+host: 'localhost'
+adapter: 'postgresql'
+encoding: utf-8
+username: 'osboxes'
+password: 'osboxes.org'
+pool: 5
+database: 'twitter_monitoring_application'
