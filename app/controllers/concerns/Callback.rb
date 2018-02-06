@@ -15,7 +15,7 @@ module Callbacks
     names.each do |name|
       m = self.class.instance_method(name)
       define_singleton_method(name) do |*args, &block|
-        if request.session['user'] != nil
+        if current_user != nil
           m.bind(self).(*args, &block)
         else
           response = Rack::Response.new      

@@ -7,3 +7,11 @@
 </form>
 
 <div id='result-search'>
+<br/>
+
+<h3>Your tracked user:</h3>
+
+<% tracked_users.each do |user| %>
+    <p id=<%= user.id %> ><%= user.name %> 
+    <button id="untrack" value=<%= user.id %> >Untrack user</button> </p> 
+<% end %>

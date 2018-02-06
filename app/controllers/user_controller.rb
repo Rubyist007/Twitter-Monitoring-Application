@@ -4,7 +4,7 @@ require './app/controllers/application_controller.rb'
 class UserController < BaseController
 
   def initialize(request)
-    self.request = request
+    super(request)
 
     authenticate!(:index, :sign_out) 
   end

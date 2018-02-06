@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20180204170235) do
 
   create_table "tracked_users", id: :serial, force: :cascade do |t|
     t.bigint "twitter_id"
+    t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,6 +34,8 @@ ActiveRecord::Schema.define(version: 20180204170235) do
     t.bigint "tweet_id"
     t.integer "tracked_user_id"
     t.string "text"
+    t.string "autor"
+    t.datetime "posted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["tracked_user_id"], name: "index_tweets_on_tracked_user_id"

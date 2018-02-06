@@ -48,6 +48,7 @@ class TwitterMonitoringApplication
     def connect_to_db
       db_config = YAML.load(File.open('./config/database.yml'))
       ActiveRecord::Base.establish_connection(db_config)
+      ActiveRecord::Base.logger = Logger.new(STDOUT)
     end 
 
     def init_variables(request)

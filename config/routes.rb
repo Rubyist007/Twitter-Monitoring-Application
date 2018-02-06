@@ -10,7 +10,9 @@ APP_ROUTES = Proc.new do
 
   controller(:twitter) do
     get '/'
+    get 'feed'
     post 'search_user'
     post 'track_user'
+    delete 'untrack_user'
   end
 end

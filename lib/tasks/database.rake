@@ -57,7 +57,7 @@ namespace :db do
   end
     
   desc 'Reset the database'
-  task reset: %w(db:get_new_tweets)
+  task fetchdata: %w(db:get_new_tweets)
 
   desc 'fetched data'
   task :get_new_tweers do
@@ -68,7 +68,7 @@ namespace :db do
       tweets = client.user_timeline(user.twitter_id, since_id: since_id)
 
       tweets.each do |tweet|
-        params = { tweet_id: tweet.id, text: tweet.full_text }
+        params = { tweet_id: tweet.id, text: tweet.full_text, autor: user.twetter_id}
         user.tweets.create(params)
       end 
     end    
