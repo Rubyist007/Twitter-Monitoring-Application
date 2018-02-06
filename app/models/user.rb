@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :tracked_users, uniq: true
 
+  has_many :tweets, -> { order(posted_at: :desc) }, through: :tracked_users
+
   def password
     @password ||= Password.new(password_hash)
   end

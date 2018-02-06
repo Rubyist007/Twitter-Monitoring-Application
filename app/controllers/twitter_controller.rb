@@ -23,12 +23,7 @@ class TwitterController < BaseController
   end
 
   def feed
-    tweets = []
-    current_user.tracked_users.includes(:tweets).each do |user|
-      tweets << user.tweets
-    end
-    
-    render('twitter/feed') { self.tweets = tweets.flatten }
+    render('twitter/feed') { self.tweets = current_user.tweets }
   end
 
   def track_user(params)
@@ -69,9 +64,7 @@ class TwitterController < BaseController
     end
 
     def tweet_upload(user)
-      tweets = client.user_timeline(user.twitter_id)
-      #p client.status(tweets.first.id).to_json
-      #p client.search("q=to#{user.twitter_id}, sinceld = #{tweets.first.id}")
+      tweets = client.user_timeline(user.twitter_id) 
       tweets.each do |tweet|
         params = { tweet_id: tweet.id, text: tweet.full_text, autor: user.name, posted_at: tweet.created_at }
         user.tweets.create(params)
